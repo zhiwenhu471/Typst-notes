@@ -2,12 +2,15 @@
 
 #set document(date: auto)
 
-#place(
+#{set text(font: "Cafenty", size: 15pt)
+  
+  place(
   top + center,
   float: true
 )[
   #title("Math symbols")
 ]
+}
 
 // #set text(font: (
   // (name: "Times New Roman", covers: "latin-in-cjk"),

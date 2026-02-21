@@ -1,4 +1,12 @@
-#figure(
+`#{}` 里面不能再添加 `label`
+
+#{
+set text(
+  font: "Times New Roman",
+  15pt
+)
+
+figure(
   table(
   columns: 3,
   stroke: none, 
@@ -15,7 +23,8 @@
   [9], [Drizzle], [Vanilla extract],
 ),
 caption: [The source of salt]
-) <table-1>
+)
+}
 
 #show table.cell.where(y: 0): set text(weight: "bold")
 
@@ -54,7 +63,8 @@ The results from @table-2 show that the design is not yet optimal. We will show 
   stroke: frame(1pt + rgb("21222C")),
 )
 
-#table(
+#figure(
+  table(
   columns: (0.4fr, 1fr, 1fr, 1fr),
 
   table.header[Month][Title][Author][Genre],
@@ -62,14 +72,17 @@ The results from @table-2 show that the design is not yet optimal. We will show 
   [February], [To Kill a Mockingbird], [Harper Lee], [Drama],
   [March], [1984], [George Orwell], [Dystopian],
   [April], [The Catcher in the Rye], [J.D. Salinger], [Coming-of-Age],
-)
+),
+caption: "A table"
+) <table-3>
 
 #set table(
   fill: (_, y) => if calc.odd(y) { rgb("EAF2F5") },
   stroke: frame(1pt + rgb("21222C")),
 )
 
-#table(
+#figure(
+  table(
   columns: (0.4fr, 1fr, 1fr, 1fr),
 
   table.header[Month][Title][Author][Genre],
@@ -77,14 +90,17 @@ The results from @table-2 show that the design is not yet optimal. We will show 
   [February], [To Kill a Mockingbird], [Harper Lee], [Drama],
   [March], [1984], [George Orwell], [Dystopian],
   [April], [The Catcher in the Rye], [J.D. Salinger], [Coming-of-Age],
-)
+),
+caption: [A table],
+) <table-4>
 
 #set table(
   fill: (_, y) => (none, rgb("EAF2F5"), rgb("DDEAEF")).at(calc.rem(y, 3)),
   stroke: frame(1pt + rgb("21222C")),
 )
 
-#table(
+#figure(
+  table(
   columns: (0.4fr, 1fr, 1fr, 1fr),
 
   table.header[Month][Title][Author][Genre],
@@ -92,7 +108,9 @@ The results from @table-2 show that the design is not yet optimal. We will show 
   [February], [To Kill a Mockingbird], [Harper Lee], [Drama],
   [March], [1984], [George Orwell], [Dystopian],
   [April], [The Catcher in the Rye], [J.D. Salinger], [Coming-of-Age],
-)
+),
+caption: [A table],
+) <table-5>
 
 #set table(
   stroke: (x, y) => (
@@ -102,7 +120,8 @@ The results from @table-2 show that the design is not yet optimal. We will show 
   ),
 )
 
-#table(
+#figure(
+  table(
   columns: (0.4fr, 1fr, 1fr, 1fr),
 
   table.header[Month][Title][Author][Genre],
@@ -110,7 +129,9 @@ The results from @table-2 show that the design is not yet optimal. We will show 
   [February], [To Kill a Mockingbird], [Harper Lee], [Drama],
   [March], [1984], [George Orwell], [Dystopian],
   [April], [The Catcher in the Rye], [J.D. Salinger], [Coming-of-Age],
-)
+),
+caption: [A table]
+) <table-6>
 
 #set text(font: "Roboto")
 
@@ -118,7 +139,8 @@ The results from @table-2 show that the design is not yet optimal. We will show 
 #let spd(name) = ([SPD], table.cell(fill: red, text(fill: white, name)))
 #let fdp(name) = ([FDP], table.cell(fill: yellow, name))
 
-#table(
+#figure(
+  table(
   columns: (auto, auto, auto),
   stroke: (x: none),
 
@@ -135,25 +157,34 @@ The results from @table-2 show that the design is not yet optimal. We will show 
   [2010-2012], ..cdu[Christian Wulff],
   [2012-2017], [n/a], [Joachim Gauck],
   [2017-],     ..spd[Frank-Walter-Steinmeier],
-)
+),
+caption: [A table with Roboto theme]
+) <table-7>
 
-#table(
+#figure(
+  table(
   columns: 4,
   stroke: 0.5pt + rgb("666675"),
   [*Monday*], [11.5], [13.0], [4.0],
   [*Tuesday*], [8.0], [14.5], [5.0],
   [*Wednesday*], [9.0], [18.5], [13.0],
-)
+),
+caption: [A simple table]
+) <table-8>
 
-#table(
+#figure(
+  table(
   columns: 4,
   stroke: none,
   [*Monday*], [11.5], [13.0], [4.0],
   [*Tuesday*], [8.0], [14.5], [5.0],
   [*Wednesday*], [9.0], [18.5], [13.0],
-)
+),
+caption: [A simple table hhhh]
+) <table-9>
 
-#table(
+#figure(
+  table(
   columns: 2,
   stroke: (x: none),
   align: horizon,
@@ -161,11 +192,14 @@ The results from @table-2 show that the design is not yet optimal. We will show 
   [☐], [Start engines],
   [☐], [Radio tower],
   [☐], [Push back],
-)
+),
+caption: [A caption of the table]
+) <table-10>
 
 #set table.hline(stroke: 0.6pt)
 
-#table(
+#figure(
+  table(
   stroke: none,
   columns: (auto, auto),
   // Morning schedule abridged.
@@ -174,25 +208,31 @@ The results from @table-2 show that the design is not yet optimal. We will show 
   [16:00], [Workshop: Tables],
   table.hline(),
   [19:00], [Day 1 Attendee Mixer],
-)
+),
+caption: [A simple table]
+) <table-11>
 
 // Base template already configured tables, but we need some
 // extra configuration for this table.
 #{
   set table(align: (x, _) => if x == 0 { left } else { right })
   show table.cell.where(x: 0): smallcaps
+  
+figure(
   table(
     columns: (auto, 1fr, 1fr, 1fr),
     table.vline(x: 1, start: 1),
     table.header[Trainset][Top Speed][Length][Weight],
     [TGV Réseau], [320 km/h], [200m], [383t],
     [ICE 403], [330 km/h], [201m], [409t],
-    [Shinkansen N700], [300 km/h], [405m], [700t],
-  )
+    [Shinkansen N700], [300 km/h], [405m], [700t],),
+    caption: [Another table])
 }
 
 #{
   set text(font: "Times New Roman")
+
+  figure(
   table(
   columns: 3,
   stroke: (x: none),
@@ -208,19 +248,23 @@ The results from @table-2 show that the design is not yet optimal. We will show 
   [*Low Agreeableness*],
   [_Contentious_ \ Competitive and easily agitated.],
   [_Detached_ \ Independent and calm, may appear aloof.],
-)
+),
+caption: [This is beautiful]
+  )
 }
 
 #show table.cell.where(x: 0): set text(style: "italic")
 #show table.cell.where(y: 0): set text(style: "normal", weight: "bold")
 #set table(stroke: (_, y) => if y > 0 { (top: 0.8pt) })
 
-#table(
+#figure(
+  table(
   columns: 3,
   align: center + horizon,
   table.header[Technique][Advantage][Drawback],
   [Diegetic], [Immersive], [May be contrived],
   [Extradiegetic], [Breaks immersion], [Obtrusive],
   [Omitted], [Fosters engagement], [May fracture audience],
+),
+caption: [The last table]
 )
-

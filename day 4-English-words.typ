@@ -9,7 +9,12 @@
 ), size: 16pt)  //分别设置“中文”和English字体
 
 
-#place(
+#{
+  set text(
+    font: "Cafenty"
+  )
+
+  place(
   top + center, 
   float: true,
   scope: "parent",
@@ -17,6 +22,7 @@
 )[
   #title[English Words!]
 ]
+}
 
 #grid(
   columns: 2,
